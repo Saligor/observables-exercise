@@ -5,10 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Observable Exercise</title>
+    <style>
+        .error,
+        .success-form
+        {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <!-- HTML goes here. -->
+    <form method="POST">
 
-    <script src="app.js" type="module"></script>
+        <div>
+            <label for="email">Email</label>
+            <input id="email" type="name" placeholder="Enter Email" required >
+            <div id="email_error" class="error">Invalid Email</div>
+        </div>
+
+        <div>
+            <lable for="password">Password</lable>
+            <input id="password" type="password" placeholder="Password" required >
+            <div id="password_error" class="error">Invalid Password</div>
+        </div>
+        <div id="successDiv" class="success-form">
+            Everything looks good
+        </div>
+    </form>
+
+    <script src="ex1.js" type="module"></script>
+
 </body>
 </html>
