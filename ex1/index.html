@@ -5,7 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Observable Exercise</title>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     <style>
+
+        form {
+            width: 500px;
+            padding: 50px 0;
+            border: 10px solid #00FFFF;
+            border-radius: 5px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
         .error,
         .success-form
         {
@@ -18,25 +32,28 @@
 </head>
 <body>
     <!-- HTML goes here. -->
-    <form method="POST">
+    <form class="pure-form pure-form-aligned">
+        <fieldset>
+            <h2>My Amazing Form Of Observables (AFOO)</h2>
+            <div class="pure-control-group">
+                <label for="email">Email Address</label>
+                <input id="email" type="email" placeholder="Email Address">
+                <div id="email_error" class="error">Invalid Email</div>
+            </div>
 
-        <div>
-            <label for="email">Email</label>
-            <input id="email" type="name" placeholder="Enter Email" required >
-            <div id="email_error" class="error">Invalid Email</div>
-        </div>
+            <div class="pure-control-group">
+                <label for="password">Password</label>
+                <input id="password" type="password" placeholder="Password">
+                <div id="password_error" class="error">Invalid password</div>
+            </div>
 
-        <div>
-            <lable for="password">Password</lable>
-            <input id="password" type="password" placeholder="Password" required >
-            <div id="password_error" class="error">Invalid Password</div>
-        </div>
-        <div id="successDiv" class="success-form">
-            Everything looks good
-        </div>
+            <div class="pure-controls">
+                <button type="submit" class="pure-button pure-button-primary">Submit</button>
+            </div>
+
+        </fieldset>
     </form>
 
-    <script src="ex1.js" type="module"></script>
-
+    <script src="ex2.js" type="module"></script>
 </body>
 </html>

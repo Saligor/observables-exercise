@@ -25,34 +25,25 @@ const emailError = document.getElementById('email_error');
  */
 const successDiv = document.getElementById('successDiv');
 
+export const email$ = Kefir.fromEvents(document.getElementById('email'), 'keydown')
+    .map(e => e.target.value);
+export const password$ = Kefir.fromEvents(document.getElementById('password'), 'keydown')
+    .map(e => e.target.value);
 
-const $email = Kefir.fromEvents(document.getElementById('email'), 'keydown')
-    .map(e => e.target.value)
-    .map(value => isEmailValid(value));
-
-const $password = Kefir.fromEvents(document.getElementById('password'), 'keydown')
-    .map(e => e.target.value)
-    .map(value => isPasswordValid(value));
-
-
-$email.observe(value => {
-    value ?
+email$.observe(value => {
+    isEmailValid(value) ?
         emailError.classList.remove(SHOW_ELEMENT_CLASS) :
         emailError.classList.add(SHOW_ELEMENT_CLASS);
 });
 
-$password.observe(value => {
-    value ?
-        passwordError.classList.add(SHOW_ELEMENT_CLASS) :
-        passwordError.classList.remove(SHOW_ELEMENT_CLASS);
+password$.observe(value => {
+    isPasswordValid(value) ?
+        passwordError.classList.remove(SHOW_ELEMENT_CLASS):
+        passwordError.classList.add(SHOW_ELEMENT_CLASS);
 });
 
-const $result = Kefir.combine({ email: $email, password: $password}, result => {
-    return result.email && result.password;
+export const isFormValidResult$ = Kefir.combine({ email: email$, password: password$}, result => {
+    return isEmailValid(result.email) && isPasswordValid(result.password);
 });
 
-$result.observe(value => {
-    value ?
-        successDiv.classList.remove(SHOW_ELEMENT_CLASS) :
-        successDiv.classList.add(SHOW_ELEMENT_CLASS);
-});
+isFormValidResult$.observe(value => value);

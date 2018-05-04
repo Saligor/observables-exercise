@@ -1,7 +1,17 @@
-import { expect } from 'chai';
+import { expect, should } from 'chai';
+import { isEmailValid, isPasswordValid } from './validation.js';
+import { password$, email$, isFormValidResult$ } from './ex1.js';
 
-describe('<module name>', () => {
-    it('should test something not as obvious', () => {
-        expect(1 + 1).to.equal(2);
-    });
+describe('Test Validation', () => {
+    // Email
+    it('Should validate a valid email', () => { expect(isEmailValid('test@test.com')).to.equal(true); });
+    it('Should validate an invalid email', () => { expect(isEmailValid('test@t..est.com')).to.equal(false); });
+
+    // Password
+    it('Should validate a valid password', () => { expect(isPasswordValid('qwe1123@rr')).to.equal(true); });
+    it('Should validate a invalid password', () => { expect(isPasswordValid('t23')).to.equal(false); });
+});
+
+describe('Test EX1', () => {
+    it('Should emit ')
 });
